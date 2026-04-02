@@ -4,6 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Gnagra Kassi Fulgence — Portfolio</title>
+  
+  <!-- Polices et Icones -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
   
@@ -11,7 +14,7 @@
     :root {
       --accent: #10b981; 
       --dark: #1e293b;
-      --bg-alt: #f8fafc; /* Couleur claire pour navbar/footer */
+      --bg-alt: #f8fafc;
       --border: #e2e8f0;
       --white: #ffffff;
     }
@@ -20,13 +23,14 @@
     body {
       background-color: var(--white);
       color: var(--dark);
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-family: 'Inter', sans-serif;
       overflow-x: hidden;
     }
 
-    /* ─── Navbar avec couleur claire ─── */
+    /* ─── Navbar ─── */
     .navbar {
-      background-color: var(--bg-alt) !important;
+      background-color: rgba(248, 250, 252, 0.95) !important;
+      backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
       padding: 15px 0;
     }
@@ -34,15 +38,14 @@
       font-weight: 600;
       font-size: 0.9rem;
       color: var(--dark) !important;
-      margin: 0 12px;
       transition: 0.3s;
     }
     .nav-link:hover { color: var(--accent) !important; }
 
-    /* ─── Animations ─── */
+    /* ─── Animations Reveal ─── */
     .reveal {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(30px);
       transition: all 0.8s ease-out;
     }
     .reveal.active {
@@ -50,32 +53,30 @@
       transform: translateY(0);
     }
 
-    /* ─── Photo Rectangulaire ─── */
+    /* ─── Photo de Profil ─── */
     .photo-frame {
-      padding: 10px;
+      padding: 12px;
       background: var(--white);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 20px;
       display: inline-block;
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
     }
-    .photo-frame img {
-      border-radius: 4px;
-      display: block;
-    }
+    .photo-frame img { border-radius: 12px; }
 
-    /* ─── Cartes & Design ─── */
+    /* ─── Cartes Personnalisées ─── */
     .custom-card {
       background: var(--white);
       border: 1px solid var(--border);
-      border-radius: 15px;
+      border-radius: 16px;
       padding: 25px;
       height: 100%;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .custom-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-8px);
       border-color: var(--accent);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
     }
 
     .progress { height: 6px; border-radius: 10px; background: #f1f5f9; margin-top: 10px; }
@@ -83,10 +84,18 @@
 
     .section-title {
       font-weight: 800;
-      font-size: 2rem;
-      margin-bottom: 50px;
+      font-size: 2.2rem;
+      margin-bottom: 40px;
       text-align: center;
     }
+
+    /* ─── Certifications ─── */
+    .certif-img {
+      max-height: 180px;
+      object-fit: contain;
+      transition: 0.3s;
+    }
+    .certif-img:hover { transform: scale(1.05); }
 
     .btn-submit {
       background: var(--accent);
@@ -97,21 +106,20 @@
       border-radius: 10px;
       transition: 0.3s;
     }
-    .btn-submit:hover { background: #059669; color: white; }
+    .btn-submit:hover { background: #059669; transform: scale(1.02); }
 
-    /* ─── Footer avec couleur claire ─── */
     footer { 
       background-color: var(--bg-alt); 
       border-top: 1px solid var(--border); 
-      padding: 50px 0 30px; 
+      padding: 60px 0 30px; 
     }
     .social-link {
-      width: 40px;
-      height: 40px;
+      width: 45px;
+      height: 45px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      border-radius: 8px;
+      border-radius: 10px;
       background: var(--white);
       color: var(--dark);
       margin: 0 8px;
@@ -122,145 +130,149 @@
     .social-link:hover {
       background: var(--accent);
       color: white;
-      border-color: var(--accent);
+      transform: translateY(-3px);
     }
   </style>
 </head>
 <body>
 
+<!-- Navigation -->
 <nav class="navbar navbar-expand-lg sticky-top">
   <div class="container">
-    <a class="navbar-brand fw-bold fs-4 text-dark" href="#">GKF.</a>
+    <a class="navbar-brand fw-bold fs-4 text-dark" href="#">GKF<span style="color:var(--accent)">.</span></a>
     <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item"><a class="nav-link" href="#skills">Compétences</a></li>
+        <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
         <li class="nav-item"><a class="nav-link" href="#projets">Projets</a></li>
-        <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
         <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
+<!-- Hero Section -->
 <section class="container my-5 py-5 reveal">
   <div class="row align-items-center g-5">
     <div class="col-lg-7">
+      <span class="badge bg-light text-success border border-success mb-3 px-3 py-2">Disponible pour un stage</span>
       <h1 class="display-4 fw-bold mb-4 text-dark">Gnagra Kassi Fulgence</h1>
-      <p class="lead text-muted mb-4 fs-5">Étudiant en BTS Informatique Développeur d'Application. Je me spécialise dans la création de solutions web modernes avec Laravel, PHP et les technologies Front-end.</p>
-      <div class="d-flex gap-3">
+      <p class="lead text-muted mb-4 fs-5">Étudiant en <strong>BTS Informatique Développeur d'Application</strong>. Je conçois des solutions web modernes avec Laravel, PHP et les technologies Front-end.</p>
+      <div class="d-flex gap-3 flex-wrap">
         <a href="#contact" class="btn btn-dark rounded-3 px-4 py-2">Me contacter</a>
-        <a href="CV – Gnagra Kassi Fulgence.pdf" class="btn btn-outline-dark rounded-3 px-4 py-2">Mon CV (PDF)</a>
+        <a href="CV – Gnagra Kassi Fulgence.pdf" class="btn btn-outline-dark rounded-3 px-4 py-2">
+          <i class="bi bi-download me-2"></i>Mon CV (PDF)
+        </a>
       </div>
     </div>
     <div class="col-lg-5 text-center">
       <div class="photo-frame">
-        <img src="Ful_photo_2026-03-31_18-06-48.jpg" alt="Fulgence" width="280">
+        <img src="Ful_photo_2026-03-31_18-06-48.jpg" alt="Fulgence" width="300" class="img-fluid">
       </div>
     </div>
   </div>
 </section>
 
+<!-- Compétences -->
 <section id="skills" class="container my-5 py-5">
   <h2 class="section-title reveal">Mes Compétences</h2>
   <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4">
     <div class="col reveal"><div class="custom-card text-center"><img src="file_type_html_icon_130541.png" width="40" class="mb-2"><h6>HTML / CSS</h6><div class="progress"><div class="progress-bar" style="width: 90%"></div></div></div></div>
-    <div class="col reveal"><div class="custom-card text-center"><img src="icon-icons.png" width="40" class="mb-2"><h6>BOOTSTRAP</h6><div class="progress"><div class="progress-bar" style="width: 58%"></div></div></div></div>
+    <div class="col reveal"><div class="custom-card text-center"><img src="icon-icons.png" width="40" class="mb-2"><h6>BOOTSTRAP</h6><div class="progress"><div class="progress-bar" style="width: 75%"></div></div></div></div>
     <div class="col reveal"><div class="custom-card text-center"><img src="javascript_icon_130900.png" width="40" class="mb-2"><h6>JAVASCRIPT</h6><div class="progress"><div class="progress-bar" style="width: 45%"></div></div></div></div>
     <div class="col reveal"><div class="custom-card text-center"><img src="icon-icons (1).png" width="40" class="mb-2"><h6>LARAVEL</h6><div class="progress"><div class="progress-bar" style="width: 40%"></div></div></div></div>
     <div class="col reveal"><div class="custom-card text-center"><img src="icon-icons (2).png" width="40" class="mb-2"><h6>REACT</h6><div class="progress"><div class="progress-bar" style="width: 30%"></div></div></div></div>
-    <div class="col reveal"><div class="custom-card text-center"><img src="file_type_git_icon_130581.png" width="40" class="mb-2"><h6>GIT</h6><div class="progress"><div class="progress-bar" style="width: 30%"></div></div></div></div>
-    <div class="col reveal"><div class="custom-card text-center"><img src="Windows_Phone_icon-icons.com_66782.png" width="40" class="mb-2"><h6>WINDOWS</h6><div class="progress"><div class="progress-bar" style="width: 90%"></div></div></div></div>
-    <div class="col reveal"><div class="custom-card text-center"><img src="github_git_icon_145985.png" width="40" class="mb-2"><h6>GITHUB</h6><div class="progress"><div class="progress-bar" style="width: 50%"></div></div></div></div>
+    <div class="col reveal"><div class="custom-card text-center"><img src="file_type_git_icon_130581.png" width="40" class="mb-2"><h6>GIT / GITHUB</h6><div class="progress"><div class="progress-bar" style="width: 50%"></div></div></div></div>
     <div class="col reveal"><div class="custom-card text-center"><img src="HomeServer_icon-icons.com_55232.png" width="40" class="mb-2"><h6>SQL / MYSQL</h6><div class="progress"><div class="progress-bar" style="width: 60%"></div></div></div></div>
-    <div class="col reveal"><div class="custom-card text-center"><img src="microsoft_office_word_logo_icon_145724.png" width="40" class="mb-2"><h6>MS WORD</h6><div class="progress"><div class="progress-bar" style="width: 90%"></div></div></div></div>
-    <div class="col reveal"><div class="custom-card text-center"><img src="microsoft_office_excel_logo_icon_145720.png" width="40" class="mb-2"><h6>MS EXCEL</h6><div class="progress"><div class="progress-bar" style="width: 40%"></div></div></div></div>
-    <div class="col reveal"><div class="custom-card text-center"><img src="microsoft_office_access_logo_icon_145727.png" width="40" class="mb-2"><h6>MS ACCESS</h6><div class="progress"><div class="progress-bar" style="width: 30%"></div></div></div></div>
+    <div class="col reveal"><div class="custom-card text-center"><img src="microsoft_office_word_logo_icon_145724.png" width="40" class="mb-2"><h6>MS OFFICE</h6><div class="progress"><div class="progress-bar" style="width: 85%"></div></div></div></div>
   </div>
 </section>
 
-    <!-- Bloc Certificat IA avec Image -->
-  <section class="container my-5 py-5">
-  <h2 class="section-title reveal">Certifications</h2>
-<div class="p-4 bg-white rounded-4 shadow-sm border-start border-4 border-success mb-4">
-  <div class="row align-items-center">
-    <div class="col-md-8">
-      <div class="d-flex align-items-start gap-3">
-        <i class="bi bi-patch-check-fill text-success fs-1"></i>
-        <div>
-          <h4 class="fw-bold text-dark mb-1">Intelligence Artificielle</h4>
-          <p class="text-muted small mb-3">Délivré par <strong>D4 Consulting</strong> • 2025</p>
-          <p class="text-secondary">
-            Formation intensive sur l'intégration des modèles d'IA, l'automatisation des tâches et l'optimisation des flux de travail technologiques.
-          </p>
+<!-- Certifications (Placé avant Projets) -->
+<section id="certifications" class="container my-5 py-5">
+  <h2 class="section-title reveal">Certifications Pro</h2>
+  <div class="custom-card reveal p-0 overflow-hidden">
+    <div class="row g-0 align-items-center">
+      <div class="col-md-8 p-4 p-lg-5">
+        <div class="d-flex align-items-center gap-3 mb-3">
+          <i class="bi bi-patch-check-fill text-success fs-1"></i>
+          <h3 class="fw-bold mb-0">Intelligence Artificielle</h3>
         </div>
+        <p class="text-muted">Délivré par <strong>D4 Consulting</strong> • 2025</p>
+        <p class="fs-5 text-secondary mb-0">
+          Formation intensive sur l'intégration des modèles d'IA, l'automatisation des tâches et l'optimisation des flux de travail technologiques. Une expertise clé pour les applications de demain.
+        </p>
+      </div>
+      <div class="col-md-4 p-4 text-center bg-light">
+        <img src="Certificat_Gnagra_Fulgence.jpg" alt="Certificat IA" class="img-fluid rounded shadow certif-img" onclick="window.open(this.src)" style="cursor: zoom-in;">
+        <p class="small text-muted mt-2 mb-0"><i class="bi bi-zoom-in me-1"></i>Cliquez pour voir en grand</p>
       </div>
     </div>
-    
-    <!-- ICI LA BALISE IMAGE -->
-    <div class="col-md-4 text-center mt-3 mt-md-0">
-      <img src="Certificat_Gnagra_Fulgence.jpg" alt="Certificat IA D4 Consulting" class="img-fluid rounded shadow-sm" style="max-height: 150px; cursor: pointer;" onclick="window.open(this.src)">
-      <p class="text-muted small mt-1"><i class="bi bi-zoom-in"></i> Cliquer pour agrandir</p>
-    </div>
   </div>
-</div>
 </section>
 
+<!-- Projets -->
 <section id="projets" class="container my-5 py-5">
-  <h2 class="section-title reveal">Mes Projets</h2>
-  <div class="row g-4 mt-2">
+  <h2 class="section-title reveal">Réalisations</h2>
+  <div class="row g-4">
     <div class="col-md-6 reveal">
       <div class="custom-card">
-        <h4 class="fw-bold text-dark">Développement Web Front-end</h4>
-        <p class="text-muted">Conception de sites responsives et ergonomiques. Intégration de maquettes avec Bootstrap et respect des standards du web.</p>
+        <div class="badge bg-soft-primary text-primary mb-3">Front-end</div>
+        <h4 class="fw-bold">Interfaces Responsives</h4>
+        <p class="text-muted">Conception de sites ergonomiques. Intégration de maquettes avec Bootstrap en respectant les standards UI/UX modernes.</p>
       </div>
     </div>
     <div class="col-md-6 reveal">
       <div class="custom-card">
-        <h4 class="fw-bold text-dark">Applications Web Back-end</h4>
-        <p class="text-muted">Réalisation de systèmes de gestion complets (CRUD) utilisant Laravel. Gestion de bases de données MySQL et logique applicative.</p>
+        <div class="badge bg-soft-success text-success mb-3">Back-end</div>
+        <h4 class="fw-bold">Systèmes CRUD Laravel</h4>
+        <p class="text-muted">Réalisation de systèmes de gestion complets. Gestion sécurisée des bases de données MySQL et logique métier complexe.</p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- Blog / Parcours -->
 <section id="blog" class="container my-5 py-5">
-  <div class="p-5 border rounded-4 bg-light reveal text-center">
-    <h2 class="fw-bold mb-4">Mon Blog</h2>
-    <p class="fs-5 text-muted mx-auto" style="max-width: 800px; line-height: 1.8;">
-     De mes premiers pas en algorithmique au <strong>Groupe ICK de Bouaké</strong> jusqu'à la 
-     maîtrise de frameworks comme Laravel aujourd'hui, mon évolution est guidée 
-     par une soif d'apprendre continue. Ce blog retrace cette transition du monde 
-     académique vers le milieu professionnel. Vous y trouverez mes retours d'expérience sur
-      mes réalisations actuelles et mes découvertes technologiques au quotidien.  
-      
+  <div class="p-5 border rounded-4 bg-light reveal text-center custom-card border-0">
+    <h2 class="fw-bold mb-4">Mon Parcours</h2>
+    <p class="fs-5 text-muted mx-auto" style="max-width: 850px; line-height: 1.8;">
+       De mes premiers pas en algorithmique au <strong>Groupe ICK de Bouaké</strong> jusqu'à la maîtrise de frameworks comme Laravel aujourd'hui, mon évolution est guidée par une soif d'apprendre continue. Ce portfolio retrace ma transition du monde académique vers le milieu professionnel.
     </p>
   </div>
 </section>
 
+<!-- Contact -->
 <section id="contact" class="container my-5 py-5">
   <div class="row justify-content-center">
     <div class="col-lg-10">
-      <div class="p-5 border rounded-4 shadow-sm reveal">
+      <div class="p-4 p-md-5 border rounded-4 shadow-sm reveal bg-white">
         <div class="row g-5">
           <div class="col-md-5">
-            <h2 class="fw-bold">Contactez-moi</h2>
-            <p class="text-muted mt-3">Ouvert aux opportunités, et aux collaborations.</p>
+            <h2 class="fw-bold">Parlons de vos projets</h2>
+            <p class="text-muted mt-3">Disponible pour un stage ou une collaboration technique.</p>
             <div class="mt-4">
-              <p><strong><i class="bi bi-envelope-fill me-2"></i> Email :</strong><br>Lin89034@gmail.com</p>
-              <p><strong><i class="bi bi-telephone-fill me-2"></i> Téléphone :</strong><br>+225 07 78 29 13 80</p>
+              <div class="d-flex align-items-center mb-3">
+                <i class="bi bi-envelope-fill text-success me-3 fs-4"></i>
+                <span>Lin89034@gmail.com</span>
+              </div>
+              <div class="d-flex align-items-center">
+                <i class="bi bi-telephone-fill text-success me-3 fs-4"></i>
+                <span>+225 07 78 29 13 80</span>
+              </div>
             </div>
           </div>
           <div class="col-md-7">
             <form action="https://formspree.io/f/mnjozbqj" method="POST">
               <div class="row">
-                <div class="col-md-6 mb-3"><input type="text" class="form-control" name="name" placeholder="Nom" required></div>
-                <div class="col-md-6 mb-3"><input type="email" class="form-control" name="email" placeholder="Email" required></div>
+                <div class="col-md-6 mb-3"><input type="text" class="form-control py-2" name="name" placeholder="Votre Nom" required></div>
+                <div class="col-md-6 mb-3"><input type="email" class="form-control py-2" name="email" placeholder="Votre Email" required></div>
               </div>
-              <div class="mb-4"><textarea class="form-control" name="message" rows="4" placeholder="Votre message..." required></textarea></div>
-              <button type="submit" class="btn-submit w-100 shadow-sm">Envoyer</button>
+              <div class="mb-4"><textarea class="form-control" name="message" rows="4" placeholder="Comment puis-je vous aider ?" required></textarea></div>
+              <button type="submit" class="btn-submit w-100 shadow-sm">Envoyer le message</button>
             </form>
           </div>
         </div>
@@ -269,19 +281,14 @@
   </div>
 </section>
 
-
-
+<!-- Footer -->
 <footer class="text-center">
   <div class="container">
-    <h3 class="fw-bold text-dark">GKF.</h3>
+    <h3 class="fw-bold text-dark">GKF<span style="color:var(--accent)">.</span></h3>
     <div class="my-4">
-      <a href="https://www.linkedin.com/in/fulgence-gnagra" class="social-link" target="_blank">
-    <i class="bi bi-linkedin"></i>
-  </a>
-      <a href="https://www.facebook.com/kassifulgence.gnagra" class="social-link" target="_blank">
-    <i class="bi bi-facebook"></i>
-  </a>
-      <a href="https://wa.me/2250584194363" class="social-link"><i class="bi bi-whatsapp"></i></a>
+      <a href="https://www.linkedin.com/in/fulgence-gnagra" class="social-link" target="_blank"><i class="bi bi-linkedin"></i></a>
+      <a href="https://www.facebook.com/kassifulgence.gnagra" class="social-link" target="_blank"><i class="bi bi-facebook"></i></a>
+      <a href="https://wa.me/2250778291380" class="social-link" target="_blank"><i class="bi bi-whatsapp"></i></a>
     </div>
     <p class="small text-muted mb-0">© 2026 Gnagra Kassi Fulgence. Abidjan, Côte d'Ivoire.</p>
   </div>
@@ -300,7 +307,9 @@
     }
   }
   window.addEventListener("scroll", reveal);
-  reveal();
+  // Lancer une première fois pour les éléments visibles au chargement
+  window.onload = reveal;
 </script>
+
 </body>
 </html>
